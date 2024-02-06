@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
+import './Page1.css'; 
 
 function Page1() {
     const [data, setData] = useState(null);
@@ -34,8 +35,8 @@ function Page1() {
     }, []);
 
     return (
-        <div>
-            <h1>BTC Prices</h1>
+        <div className="page1Container">
+            <h1 className="page1Title">BTC Prices</h1>
             {error ? (
                 <div>{error}</div>
             ) : data ? (
