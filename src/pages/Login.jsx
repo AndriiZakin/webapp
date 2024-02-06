@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import './Login.css';
 
@@ -20,6 +21,8 @@ function Login({setIsLoggedIn}) {
         }
     };
 
+    const navigate = useNavigate();
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -34,6 +37,7 @@ function Login({setIsLoggedIn}) {
         if (response.ok) {
             Cookies.set('isLoggedIn', 'true');
             setIsLoggedIn(true);
+            navigate('/')
         } else {
             setError('Invalid username or password. Please try again.');
         }

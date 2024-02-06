@@ -1,3 +1,11 @@
+
+.navbar-style {
+    position: relative;
+    display: inline-block;
+    margin-top: 1%; /* Add space from the top */
+    margin-left: 1%;  /* Change this from block to inline-block */
+}
+
 .dropdown-menu {
     transition: all 1s ease; /* Increase the duration of the transition */
     position: fixed;
@@ -24,11 +32,16 @@
     justify-content: center;
     flex: 1; /* Each link will take up an equal amount of space */
     width: 100%; /* Each link will stretch to the full width of the container */
+    color: #704caf; /* This will be replaced by JavaScript */
+    text-decoration: none; /* Removes the underline from the links */
+    font-size: 20px; /* Change this to your preferred size */
+    font-weight: bold; /* Makes the text bold */
 }
 
 .button-container {
-    margin-top: 1%; /* Add space from the top */
-    margin-left: 3%; /* Add space from the right */
+    position: relative;
+    display: inline-block;
+/* Add space from the right */
 }
 
 .dropdown-toggle {

@@ -2,11 +2,12 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Navbar from './Navbar/Navbar.jsx';
 import Cookies from 'js-cookie';
+import './App.css'
 import Page1 from './pages/Page1.jsx';
 import Page2 from './pages/Page2';
 import Page3 from './pages/Page3';
 import Page4 from './pages/Page4';
-import MainPage from './pages/MainPage';
+import MainPage from './pages/MainPage.jsx';
 import Login from './pages/Login.jsx';
 import config from './config.js';
 
@@ -19,9 +20,7 @@ function useAuth() {
       const cookie = cookies[i];
       const eqPos = cookie.indexOf("=");
       const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-      if (name.trim() !== 'isLoggedIn') { // Don't clear isLoggedIn cookie
-        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-      }
+      document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
     }
   };
   
@@ -84,14 +83,17 @@ function App() {
 
   return (
     <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/page1" element={<Page1 />} />
-        <Route path="/page2" element={<Page2 />} />
-        <Route path="/page3" element={<Page3 />} />
-        <Route path="/page4" element={<Page4 />} />
-      </Routes>
+      <div className="app-container">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/page1" element={<Page1 />} />
+          <Route path="/page2" element={<Page2 />} />
+          <Route path="/page3" element={<Page3 />} />
+          <Route path="/page4" element={<Page4 />} />
+          <Route path="/*" element={<Navigate to="/" replace />} /> {/* Redirect to main page if none of the above routes match */}
+        </Routes>
+      </div>
     </Router>
   );
 }
